@@ -1,0 +1,52 @@
+1.Any number of players can be added to the game itself.
+
+2.The game consist of 4 types of dices and each of them has specific particular number of sides as follows:
+         * 6 sides
+         * 12 sides
+         * 18 sides
+         * 24 sides
+  And,the every player which is log in to game should select the number of sides of the dice initially.
+  when selecting dice,it must select only above mentioned type.other wise it will not continue to rounds.
+
+
+3.every player has to sign in to the game by adding their username and the password.
+
+3.The players will be able to notify that how many player has been engage,to the game before 
+  starts it's rounds.
+
+4.There is a Non Human Player in the game known as the computer, And he will be the first player
+  who roll the dice.
+  accidently, if there are only one player engage to the game,still he can player the game 
+  as there is a non human player.This is a more important senario in this case. 
+
+5.each player need to press 'r' key in the key board and to roll the dice,and once all the players 
+  has complete rolling dice,one round of the game will be finish by showing the results of 
+  that specific particular round.
+
+6.As like that there are 3 rounds of the game and player need to play all the 3 rounds.
+  And every round will show the results seperatly.
+ 
+7. Finally it will print the final scores of each and every player and also the winner will be 
+  claculated.And the username of the selected winner will be printed on the console.
+
+8.players can play another gameplay once the gameplay is finished.
+
+9.if any of the player log in to the game need to sign out from the game, that player can 
+   sigout before the new gameplay is begins, by entering his/her username which was entered before.
+
+10.Any number of players can be sign out.
+
+11.After sign out the game can be continue to another gameplay with the exsisting players,
+   and new players also can be added.
+
+12.Players can change the sides of the dice when each and every new gameplay is begins.
+
+13.If another round is not going to play by the players,all the player in the game will be
+   automatically sign out.
+
+14.Every invalid inputs from the players are not acceptable by the game.
+
+
+
+ 
+

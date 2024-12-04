@@ -1,0 +1,29 @@
+package firstProject;
+
+public class Player {
+   public String name;
+   public double score;
+   public String password;
+   public double final_score;
+   
+   public Player () {
+	   name = "";
+	   password = "";
+	   score = 0.00;
+	   final_score = 0.00;
+   }
+   
+   
+   
+   public Player (String name,String password) {
+	   this.name = name;
+	   this.password = password;	
+	   this.score = 0.00;	
+	   this.final_score = 0.00;
+   }
+   
+   public void cal_score (int value) {
+	   score = score + value ;
+   }
+     
+}

@@ -1,0 +1,116 @@
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+    Scanner scn = new Scanner(System.in);
+     
+     boolean play = true;
+     char playnum ;
+     int count = 0;
+
+     
+     int sides;
+	 do {
+	    System.out.print("Enter the sides of the Dice (6/12/18/24):");
+	    sides = scn.nextInt();
+	 }while (sides != 6 && sides != 12 && sides !=18 && sides != 24); 
+	 
+	 System.out.println("");
+	 
+     Game game = new Game (sides);
+     
+	 do { 
+		 for(int i = 0; i<game.player.size(); i++) {
+			 Player player = game.player.get(i);
+			 player.final_score = 0;
+		 }
+		 
+		 if (count > 0) {
+			   char decision;
+		       do {
+		    	   System.out.print("Do you want to change the sides of dice for new gameplay (y/n): ");
+				   decision = scn.next().charAt(0);
+		       }while (decision != 'y' && decision != 'n');		 
+		       if (decision == 'y') {				    	
+		    	   do {
+		    	      System.out.print("Enter the Number of Sides in dice (6/12/18/24): ");
+		    	      sides = scn.nextInt();		    	      		    	      
+		    	   }while (sides != 6 && sides != 12 && sides !=18 && sides != 24);	
+		    	   System.out.println("");
+		    	   
+		    	   game.dice = new Dice(sides);		    	   
+		       }
+		  }  
+		    		  
+		  if (count > 0) {		        
+			    System.out.println("Total Players Engauge:" + game.player.size());
+			    System.out.print("Would you like to Add More (y/n): ");
+			    char addmore = scn.next().charAt(0);
+			    if(addmore == 'y') {
+				    game.add_player();
+		        }
+			  
+		   }else {
+			    Player NonHumanPlayer = new NonHumanPlayer("Computer");
+			    System.out.println("   *** Please Add players ***");
+			    System.out.println("");
+			    game.add_player(NonHumanPlayer);
+		   }
+		   
+		  
+		   
+		  		   
+		   game.game_rounds ();
+		   
+		   game.display_scores ();
+		   
+		   game.Find_winner ();
+		   
+		   
+		   
+		 
+	       System.out.println("");  
+	       
+	         boolean z = true;
+ 	         
+	         do {
+	            System.out.println("Do you want to SignOut (y/n)");      	         
+	            char signout = scn.next().charAt(0);
+	          
+	            if(signout == 'y') {
+   	            System.out.println("enter player name:");
+   	            String x = scn.next(); 
+   	            scn.nextLine();
+   	         
+	                game.signOut(x);
+	            } 
+	            
+	            if(signout == 'n') {
+                   z = false;
+	            } 
+	            
+	         }while(z == true);
+	       
+
+	       do {
+	          System.out.print("Would you like to play Another Round (y/n):");
+	          playnum = scn.next().charAt(0);  	      		    	      
+ 	       }while (playnum != 'y' && playnum != 'n' );   
+	       
+	       System.out.println("");
+	       
+           if(playnum == 'y') {
+     	         play = true;
+     	         count ++;
+           }else {
+     	         play = false;    	     
+     	         count = 0;
+           }
+        	          
+	 }while (play == true);
+	  System.out.println("**** Thanks for Engaging With US ****");
+	
+     } 
+
+}

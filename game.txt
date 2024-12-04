@@ -1,0 +1,162 @@
+package firstProject;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Game {
+	Scanner scn = new Scanner(System.in);
+	public ArrayList<Player> player;
+	public Dice dice;
+	
+	public Game (int sides) {
+		player = new ArrayList<>();
+		dice = new Dice(sides);
+	}
+	
+	public void add_player (Player NonHuman) {
+		
+		  boolean addanother = true;
+		  this.player.add(NonHuman);
+		  while(addanother == true){
+			 String name1;
+			 String password1;
+			 
+		     System.out.print("enter Name:");
+		     name1 = scn.nextLine();
+		     System.out.print("enter Password:");
+		     password1 = scn.nextLine();
+		     
+		     System.out.println("");
+		  	
+		     this.player.add(new Player(name1,password1));
+           		     		               
+             System.out.print("Would you like to add another player (y/n) : ");
+               char add = scn.next().charAt(0);
+               scn.nextLine();
+               
+               if(add == 'y') {
+      	         addanother = true;
+               }else {
+      	         addanother = false;
+      	         System.out.println("");
+               }   
+          }
+		  
+		  
+		  System.out.println("***** Total Players Engauge:" + player.size() + " *****");
+		 
+	}
+	
+	
+	
+	public void add_player () {
+		
+		  boolean addanother = true;
+		  while(addanother == true){
+			 String name1;
+			 String password1;
+			 
+		     System.out.print("enter Name:");
+		     name1 = scn.next();		     
+		     System.out.print("enter Password:");
+		     password1 = scn.next();
+		     
+		     System.out.println("");
+		  	
+		     this.player.add(new Player(name1,password1));
+         		     		               
+           System.out.print("Would you like to add another player (y/n) : ");
+             char add = scn.next().charAt(0);
+             scn.nextLine();
+             
+             if(add == 'y') {
+    	         addanother = true;
+             }else {
+    	         addanother = false;
+    	         System.out.println("");
+             }   
+        }
+		  
+		  
+		  System.out.println("***** Total Players Engauge:" + player.size() + " *****");
+		 
+	}
+	
+	
+	
+			
+	public void game_rounds () {
+		for(int j = 0; j<3; j++ ) {
+		   System.out.println("        ***** ROUND:" + (j+1)+"*****");
+		   
+		   for (int i = 0; i < player.size(); i++) {
+               Player player = this.player.get(i);             
+               
+               System.out.print("Your Turn " + player.name + " Press 'r' To Roll Dice: ");
+               char roll = scn.next().charAt(0);             
+               if(roll =='r') {            	
+            	   player.score = dice.Cal_valueSelected ();;
+               }
+           }
+		   
+		   System.out.println("");
+		   System.out.println("     ~~~ ROUND "+(j+1)+" : RESULTS ~~~");
+		   for (int z = 0; z < player.size(); z++) {
+			   Player player = this.player.get(z);
+			   System.out.println ("Name : " + player.name + "  Score : " + player.score);
+			   player.final_score = player.final_score + player.score;
+		   }
+		   System.out.println("");
+		   
+		}   
+
+	}
+	
+	
+		
+	public void display_scores () {
+		
+		for (int i = 0; i < player.size(); i++) {
+            Player player = this.player.get(i);
+            System.out.println("Player Name: " + player.name + ",  Final Score: " + player.final_score);
+        }
+	}
+	
+	
+	
+    public void Find_winner () {
+    	Player player =  this.player.get(0);
+    	double max = (this.player.get(0)).final_score;
+    	  	
+		for (int i = 0; i < this.player.size(); i++) {
+			player = this.player.get(i);
+            if (max > player.final_score) {
+            	player = this.player.get(i);
+            }
+        }	
+		System.out.println ("");
+		System.out.println ("***** CONGRATULATION "+ player.name + " YOU ARE THE WINNER *****");		
+	}
+    
+	
+    
+		
+    public void signOut(String playerName) {
+        int index = -1;
+        for (int i = 0; i < player.size(); i++) {
+            if (player.get(i).name.equals(playerName)) {
+                index = i;
+                break;
+            }
+        }
+
+        if (index != -1) {
+            player.remove(index);
+            System.out.println("Player '" + playerName + "' has been removed.");
+        } else {
+            System.out.println("Player '" + playerName + "' not found.");
+        }
+
+        System.out.println("***** Remaining Players: " + player.size() + " *****");
+    }
+
+}

@@ -1,0 +1,27 @@
+package firstProject;
+import java.util.Random;
+
+public class Dice {
+
+   public int nu_sides;
+   public int currentValueSelected;
+   
+   public Dice () {
+	   nu_sides = 0;
+	   currentValueSelected = 0;
+   }
+   
+   public Dice (int nu_sides) {
+	   this.nu_sides = nu_sides;
+	   currentValueSelected = 0;
+   }
+   
+      
+   public int Cal_valueSelected () {
+	   Random Rand = new Random ();
+	   currentValueSelected = Rand.nextInt(nu_sides)+1;
+	   return currentValueSelected;
+   }
+   
+  
+}

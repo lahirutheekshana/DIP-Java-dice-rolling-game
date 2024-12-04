@@ -1,0 +1,9 @@
+package firstProject;
+
+public class NonHumanPlayer extends Player {
+
+    public NonHumanPlayer(String name) {
+        super(name, null); // No password
+    }
+
+}
